@@ -13,7 +13,7 @@ const shortest = (town1, town2, distance=0, minDist=[20]) => {
       let newDist = distance + val
 
       if(towns[1] === town2 && newDist < minDist[0]) minDist[0] = newDist;
-      else return shortest(towns[1], town2, newDist, minDist);
+      else shortest(towns[1], town2, newDist, minDist);
 
     }
 

@@ -29,7 +29,7 @@ withNumberOfStops = (town1, town2, stops, curr=0, count=[]) => {
     if(key[0] === town1) {
 
       if(key[1] === town2 && curr === 4) count.push(1);
-      else return withNumberOfStops(key[1], town2, stops, curr + 1, count);
+      else withNumberOfStops(key[1], town2, stops, curr + 1, count);
 
     }
 
@@ -47,7 +47,7 @@ withMaxDistance = (town1, town2, maxDist, distance=0, count=[]) => {
     if(key[0] === town1) {
 
       if(key[1] === town2) count.push(1);
-      return withMaxDistance(key[1], town2, maxDist, distance += val, count);
+      withMaxDistance(key[1], town2, maxDist, distance += val, count);
 
     }
 
