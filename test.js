@@ -2,7 +2,7 @@ const findDistance = require('./findDistance.js');
 const findTrips    = require('./findNumberOfTrips.js')
 const findRoute    = require('./findShortestRoute.js');
 
-// TETS
+// TESTS
 const output1 = findDistance('A-B-C');
 const output2 = findDistance('A-D');
 const output3 = findDistance('A-D-C');
