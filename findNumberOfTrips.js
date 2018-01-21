@@ -3,56 +3,56 @@ const inputObj = require('./input.js');
 
 // Compute the number of different routes between two towns with various parameters
 
-withMaxStops = (town1, town2, maxStops, count=[]) => {
+withMaxStops = (town1, town2, maxStops, count=0) => {
 
-  if (maxStops === 0) return;
+  if (maxStops === 0) return count;
 
   _.forEach(inputObj, (val, key) => {
     if(key[0] === town1) {
 
-      if(key[1] === town2) count.push(1);
-      withMaxStops(key[1], town2, maxStops - 1, count);
+      if(key[1] === town2) count += 1;
+      count = withMaxStops(key[1], town2, maxStops - 1, count);
 
     }
 
   });
-  return count.length;
+  return count;
 
 }
 
-withNumberOfStops = (town1, town2, stops, curr=0, count=[]) => {
+withNumberOfStops = (town1, town2, stops, curr=0, count=0) => {
 
-  if (curr > stops) return;
+  if (curr > stops) return count;
 
   _.forEach(inputObj, (val, key) => {
 
     if(key[0] === town1) {
 
-      if(key[1] === town2 && curr === 4) count.push(1);
-      else withNumberOfStops(key[1], town2, stops, curr + 1, count);
+      if(key[1] === town2 && curr === 4) count += 1;
+      else count = withNumberOfStops(key[1], town2, stops, curr + 1, count);
 
     }
 
   });
-  return count.length;
+  return count;
 
 }
 
-withMaxDistance = (town1, town2, maxDist, distance=0, count=[]) => {
+withMaxDistance = (town1, town2, maxDist, distance=0, count=0) => {
 
-  if (distance > maxDist) return;
+  if (distance > maxDist) return count;
 
   _.forEach(inputObj, (val, key) => {
 
     if(key[0] === town1) {
 
-      if(key[1] === town2) count.push(1);
-      withMaxDistance(key[1], town2, maxDist, distance += val, count);
+      if(key[1] === town2) count += 1;
+      count = withMaxDistance(key[1], town2, maxDist, distance += val, count);
 
     }
 
   });
-  return count.length;
+  return count;
 
 }
 
